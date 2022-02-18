@@ -1,12 +1,12 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-18 17:15:50
+ * @LastEditTime: 2022-02-18 19:00:49
  * @LastEditors: saber
  * @Description: 
 -->
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 import { FadeTransition } from "../../src";
@@ -14,24 +14,41 @@ import { FadeTransition } from "../../src";
 const show = ref(true);
 
 const TComponents = {
-  'fade': FadeTransition 
-}
+  fade: FadeTransition,
+};
 </script>
 
 <template>
-  <button @click="show = !show">Toggle</button>
-  <FadeTransition>
-    <p v-if="show">hello</p>
-  </FadeTransition>
+  <div><button @click="show = !show">Toggle</button></div>
   <div class="main-content">
     <div class="transition-wrapper">
       <component :is="TComponents['fade']">
         <div v-show="show">
           <div class="box">
-            <p> {{ 'saber----saber' }}</p>
+            <p>{{ "saber----saber" }}</p>
           </div>
         </div>
       </component>
+    </div>
+
+    <div class="transition-select">
+      <a-space>
+        <a-select :style="{width:'320px'}">
+          <a-option>Beijing</a-option>
+          <a-option>Shanghai</a-option>
+          <a-option>Guangzhou</a-option>
+        </a-select>
+        <a-select :style="{width:'320px'}">
+          <a-option>Beijing</a-option>
+          <a-option>Shanghai</a-option>
+          <a-option>Guangzhou</a-option>
+        </a-select>
+        <a-select :style="{width:'320px'}">
+          <a-option>Beijing</a-option>
+          <a-option>Shanghai</a-option>
+          <a-option>Guangzhou</a-option>
+        </a-select>
+      </a-space>
     </div>
   </div>
 </template>
@@ -98,22 +115,25 @@ a,
   }
 }
 
- .main-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 320px);
-    padding: 0px 40px 80px;
-  }
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 320px);
+  padding: 0px 40px 80px;
+}
 
-  .transition-wrapper {
-    width: 400px;
-    min-height: 250px;
-    margin-top: 50px;
-    margin-bottom: 20px;
-  }
-  .transition-wrapper.group {
-    width: 600px;
-  } 
+.transition-wrapper {
+  width: 400px;
+  min-height: 250px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.transition-wrapper.group {
+  width: 600px;
+}
+.transition-select{
+  width: 100%;
+}
 </style>

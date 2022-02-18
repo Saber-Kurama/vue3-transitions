@@ -8,6 +8,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "@arco-design/web-vue": "^2.17.0",
     "vue": "^3.2.29"
   },
   "devDependencies": {

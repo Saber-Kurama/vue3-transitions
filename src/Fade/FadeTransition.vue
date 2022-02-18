@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-18 18:27:52
+ * @LastEditTime: 2022-02-18 19:06:59
  * @LastEditors: saber
  * @Description: 
 -->
@@ -50,7 +50,7 @@ const beforeEnter = (el: HTMLElement) => {
       enterDuration = props.duration.enter;
     }
     if (el.style) {
-      el.style.animationDirection = `${enterDuration}ms`;
+      el.style.animationDuration = `${enterDuration}ms`;
       el.style.color = 'red';
     }
     emits('before-enter', el)
