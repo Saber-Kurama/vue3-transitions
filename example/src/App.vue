@@ -1,12 +1,25 @@
+<!--
+ * @Author: saber
+ * @Date: 2022-02-18 10:12:22
+ * @LastEditTime: 2022-02-18 11:04:40
+ * @LastEditors: saber
+ * @Description: 
+-->
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-import { FadeTransition } from '../../src';
+import { ref } from 'vue';
+import HelloWorld from "./components/HelloWorld.vue";
+import TheWelcome from "./components/TheWelcome.vue";
+import { FadeTransition } from "../../src";
+
+const show = ref(true);
 </script>
 
 <template>
-  <FadeTransition />
-  <header>
+  <button @click="show = !show">Toggle</button>
+  <FadeTransition>
+    <p v-if="show">hello</p>
+  </FadeTransition>
+  <!-- <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
@@ -16,11 +29,11 @@ import { FadeTransition } from '../../src';
 
   <main>
     <TheWelcome />
-  </main>
+  </main> -->
 </template>
 
 <style>
-@import './assets/base.css';
+@import "./assets/base.css";
 
 #app {
   max-width: 1280px;
