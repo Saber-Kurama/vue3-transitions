@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-18 11:26:28
+ * @LastEditTime: 2022-02-18 18:27:52
  * @LastEditors: saber
  * @Description: 
 -->
@@ -29,6 +29,8 @@ const props = defineProps({
   group: Boolean as PropType<boolean>,
 });
 
+const emits = defineEmits(['before-enter']);
+
 const componentType = computed(() => {
   return props.group ? TransitionGroup : Transition;
 });
@@ -38,10 +40,43 @@ const componentType = computed(() => {
 //    } else {
 //     a.saber
 //    }
+
+const beforeEnter = (el: HTMLElement) => {
+  if (el) {
+    let enterDuration = 300;
+    if (typeof props.duration === "number") {
+      enterDuration = props.duration;
+    } else {
+      enterDuration = props.duration.enter;
+    }
+    if (el.style) {
+      el.style.animationDirection = `${enterDuration}ms`;
+      el.style.color = 'red';
+    }
+    emits('before-enter', el)
+  }
+};
 </script>
 <template>
-<TransitionGroup move-class=""></TransitionGroup>
-  <component :is="componentType" >
+  <!-- <transition
+    @enter="
+      (el) => {
+        beforeEnter(el);
+      }
+    "
+    enter-active-class="fadeIn"
+    move-class="fade-move"
+    leave-active-class="fadeOut"
+  >
+    <slot></slot
+  ></transition> -->
+  <component
+    :is="componentType"
+    @beforeEnter="($el: HTMLElement) => beforeEnter($el)" 
+    enter-active-class="fadeIn"
+    move-class="fade-move"
+    leave-active-class="fadeOut"
+  >
     <slot></slot>
   </component>
 </template>
@@ -57,6 +92,7 @@ const componentType = computed(() => {
 }
 .fadeIn {
   animation-name: fadeIn;
+  animation-duration: 0.3s;
 }
 @keyframes fadeOut {
   from {
@@ -68,6 +104,7 @@ const componentType = computed(() => {
 }
 .fadeOut {
   animation-name: fadeOut;
+  animation-duration: 0.3s;
 }
 .fade-move {
   transition: transform 0.3s ease-out;

@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-18 11:04:40
+ * @LastEditTime: 2022-02-18 17:15:50
  * @LastEditors: saber
  * @Description: 
 -->
@@ -12,6 +12,10 @@ import TheWelcome from "./components/TheWelcome.vue";
 import { FadeTransition } from "../../src";
 
 const show = ref(true);
+
+const TComponents = {
+  'fade': FadeTransition 
+}
 </script>
 
 <template>
@@ -19,17 +23,17 @@ const show = ref(true);
   <FadeTransition>
     <p v-if="show">hello</p>
   </FadeTransition>
-  <!-- <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div class="main-content">
+    <div class="transition-wrapper">
+      <component :is="TComponents['fade']">
+        <div v-show="show">
+          <div class="box">
+            <p> {{ 'saber----saber' }}</p>
+          </div>
+        </div>
+      </component>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main> -->
+  </div>
 </template>
 
 <style>
@@ -93,4 +97,23 @@ a,
     margin: 0 2rem 0 0;
   }
 }
+
+ .main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 320px);
+    padding: 0px 40px 80px;
+  }
+
+  .transition-wrapper {
+    width: 400px;
+    min-height: 250px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+  .transition-wrapper.group {
+    width: 600px;
+  } 
 </style>
