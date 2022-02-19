@@ -7,6 +7,8 @@
 -->
 <script lang="ts">
 import { computed, PropType, Transition, TransitionGroup } from "vue";
+import baseProps from '../base/props';
+import useBaseHook from '../base/hooks';
 
 export default {
   name: "FadeTransition",
@@ -18,22 +20,12 @@ interface EnterLeaveI {
   leave: number;
 }
 const props = defineProps({
-  duration: {
-    type: [Number, Object] as PropType<number | EnterLeaveI>,
-    default: 300,
-  },
-  delay: {
-    tyep: [Number, Object] as PropType<number | EnterLeaveI>,
-    default: 0,
-  },
-  group: Boolean as PropType<boolean>,
+  ...baseProps
 });
-
+// todo: 这个 hook的逻辑对吗， 如果 props 发生修改呢
+const { componentType, beforeEnter, enter } = useBaseHook(props);
 const emits = defineEmits(['before-enter']);
 
-const componentType = computed(() => {
-  return props.group ? TransitionGroup : Transition;
-});
 // const a = props.duration;
 //    if( typeof(a) === 'number'){
 //        a
@@ -41,21 +33,21 @@ const componentType = computed(() => {
 //     a.saber
 //    }
 
-const beforeEnter = (el: HTMLElement) => {
-  if (el) {
-    let enterDuration = 300;
-    if (typeof props.duration === "number") {
-      enterDuration = props.duration;
-    } else {
-      enterDuration = props.duration.enter;
-    }
-    if (el.style) {
-      el.style.animationDuration = `${enterDuration}ms`;
-      el.style.color = 'red';
-    }
-    emits('before-enter', el)
-  }
-};
+// const beforeEnter = (el: HTMLElement) => {
+//   if (el) {
+//     let enterDuration = 300;
+//     if (typeof props.duration === "number") {
+//       enterDuration = props.duration;
+//     } else {
+//       enterDuration = props.duration.enter;
+//     }
+//     if (el.style) {
+//       el.style.animationDuration = `${enterDuration}ms`;
+//       el.style.color = 'red';
+//     }
+//     emits('before-enter', el)
+//   }
+// };
 </script>
 <template>
   <!-- <transition
@@ -70,9 +62,11 @@ const beforeEnter = (el: HTMLElement) => {
   >
     <slot></slot
   ></transition> -->
+  {{ componentType.name }}
   <component
     :is="componentType"
-    @beforeEnter="($el: HTMLElement) => beforeEnter($el)" 
+    @beforeEnter="($el: HTMLElement) => beforeEnter($el)"
+    @enter="($el: HTMLElement) => enter($el)"
     enter-active-class="fadeIn"
     move-class="fade-move"
     leave-active-class="fadeOut"

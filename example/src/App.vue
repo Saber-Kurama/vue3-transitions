@@ -6,12 +6,13 @@
  * @Description: 
 -->
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 import { FadeTransition } from "../../src";
 
 const show = ref(true);
+const group = ref(false);
 
 const TComponents = {
   fade: FadeTransition,
@@ -22,7 +23,7 @@ const TComponents = {
   <div><button @click="show = !show">Toggle</button></div>
   <div class="main-content">
     <div class="transition-wrapper">
-      <component :is="TComponents['fade']">
+      <component :is="TComponents['fade']" :group="group">
         <div v-show="show">
           <div class="box">
             <p>{{ "saber----saber" }}</p>
@@ -33,17 +34,17 @@ const TComponents = {
 
     <div class="transition-select">
       <a-space>
-        <a-select :style="{width:'320px'}">
+        <a-select :style="{ width: '320px' }">
           <a-option>Beijing</a-option>
           <a-option>Shanghai</a-option>
           <a-option>Guangzhou</a-option>
         </a-select>
-        <a-select :style="{width:'320px'}">
+        <a-select :style="{ width: '320px' }">
           <a-option>Beijing</a-option>
           <a-option>Shanghai</a-option>
           <a-option>Guangzhou</a-option>
         </a-select>
-        <a-select :style="{width:'320px'}">
+        <a-select :style="{ width: '320px' }">
           <a-option>Beijing</a-option>
           <a-option>Shanghai</a-option>
           <a-option>Guangzhou</a-option>
@@ -133,7 +134,7 @@ a,
 .transition-wrapper.group {
   width: 600px;
 }
-.transition-select{
+.transition-select {
   width: 100%;
 }
 </style>
