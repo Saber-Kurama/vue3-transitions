@@ -7,24 +7,21 @@
 -->
 <script lang="ts">
 import { computed, PropType, Transition, TransitionGroup } from "vue";
-import baseProps from '../base/props';
-import useBaseHook from '../base/hooks';
+import baseProps from "../base/props";
+import type { BasePropsType } from "../base/props";
+import useBaseHook from "../base/hooks";
 
 export default {
   name: "FadeTransition",
 };
 </script>
 <script setup lang="ts">
-interface EnterLeaveI {
-  enter: number;
-  leave: number;
-}
-const props = defineProps({
-  ...baseProps
+const props: BasePropsType = defineProps({
+  ...baseProps,
 });
 // todo: 这个 hook的逻辑对吗， 如果 props 发生修改呢
 const { componentType, beforeEnter, enter } = useBaseHook(props);
-const emits = defineEmits(['before-enter']);
+const emits = defineEmits(["before-enter"]);
 
 // const a = props.duration;
 //    if( typeof(a) === 'number'){
@@ -65,6 +62,7 @@ const emits = defineEmits(['before-enter']);
   {{ componentType.name }}
   <component
     :is="componentType"
+    :tag="props.tag"
     @beforeEnter="($el: HTMLElement) => beforeEnter($el)"
     @enter="($el: HTMLElement) => enter($el)"
     enter-active-class="fadeIn"
