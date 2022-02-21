@@ -41,29 +41,8 @@ const hooks = {
   ...attrs,
   onBeforeEnter: beforeEnter
 }
-console.log('hooks---', hooks)
-// const a = props.duration;
-//    if( typeof(a) === 'number'){
-//        a
-//    } else {
-//     a.saber
-//    }
+// console.log('hooks---', hooks)
 
-// const beforeEnter = (el: HTMLElement) => {
-//   if (el) {
-//     let enterDuration = 300;
-//     if (typeof props.duration === "number") {
-//       enterDuration = props.duration;
-//     } else {
-//       enterDuration = props.duration.enter;
-//     }
-//     if (el.style) {
-//       el.style.animationDuration = `${enterDuration}ms`;
-//       el.style.color = 'red';
-//     }
-//     emits('before-enter', el)
-//   }
-// };
 </script>
 <template>
   <!-- <transition

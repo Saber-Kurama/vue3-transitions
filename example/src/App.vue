@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-21 18:24:05
+ * @LastEditTime: 2022-02-21 18:40:02
  * @LastEditors: saber
  * @Description: 
 -->
@@ -59,6 +59,9 @@ const triggerTransition = () => {
 const beforeEnter = () => {
   console.log('beforeEnter-----')
 }
+const onEnter = () => {
+  console.log('onenter---')
+}
 </script>
 
 <template>
@@ -71,6 +74,8 @@ const beforeEnter = () => {
         :duration="duration"
         :delay="delay"
         @beforeEnter="() => { beforeEnter() }"
+        @enter="() => { onEnter()}"
+        move-class="saber"
       >
         <div v-show="show">
           <div class="box">

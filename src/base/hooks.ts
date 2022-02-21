@@ -1,7 +1,7 @@
 /*
  * @Author: saber
  * @Date: 2022-02-21 09:55:38
- * @LastEditTime: 2022-02-21 18:28:58
+ * @LastEditTime: 2022-02-21 18:39:14
  * @LastEditors: saber
  * @Description: 
  */
@@ -35,7 +35,7 @@ const useBaseHooks = (props: BasePropsType, emits: EmitsI) => {
         el.style.color = "red";
       }
       setStyles(el);
-      // emits('before-enter', el)
+      emits('before-enter', el)
     }
   };
   const enter = (el: HTMLElement) => {
