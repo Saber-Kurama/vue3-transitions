@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-21 18:40:02
+ * @LastEditTime: 2022-02-21 20:23:05
  * @LastEditors: saber
  * @Description: 
 -->
@@ -9,13 +9,16 @@
 import { ref, reactive } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
+import Icon from "./Icon.vue";
+import { generateRGBColors } from "./utils";
 import { FadeTransition } from "../../src";
 
 const show = ref(true);
-const group = ref(false);
+// const group = ref(false);
 const isGroup = ref(false);
 const duration = ref(300);
 const delay = ref(0);
+const colors = ref<any[]>(generateRGBColors(5));
 const transitionName = ref<string>("FadeTransition");
 
 const TComponents: any = {
@@ -50,31 +53,51 @@ const transitionOptions = [
 ];
 
 const triggerTransition = () => {
-  if (group.value) {
+  if (isGroup.value) {
+    add()
   } else {
     show.value = !show.value;
   }
 };
+const randomIndex = () => {
+  return Math.floor(Math.random() * colors.value.length);
+};
+const add = () => {
+  console.log('add')
+  let newColor = generateRGBColors(1);
+  colors.value.splice(randomIndex(), 0, newColor[0]);
+};
+const remove = (index: number) => {
+  colors.value.splice(index, 1);
+};
 // todo: 组件提示？
 const beforeEnter = () => {
-  console.log('beforeEnter-----')
-}
+  console.log("beforeEnter-----");
+};
 const onEnter = () => {
-  console.log('onenter---')
-}
+  console.log("onenter---");
+};
 </script>
 
 <template>
   <div class="main-content">
-    <div class="transition-wrapper">
+    <div class="transition-wrapper" :class="{ group: isGroup }">
       <component
         :is="TComponents[transitionName]"
         appear
         v-if="!isGroup"
         :duration="duration"
         :delay="delay"
-        @beforeEnter="() => { beforeEnter() }"
-        @enter="() => { onEnter()}"
+        @beforeEnter="
+          () => {
+            beforeEnter();
+          }
+        "
+        @enter="
+          () => {
+            onEnter();
+          }
+        "
         move-class="saber"
       >
         <div v-show="show">
@@ -83,6 +106,25 @@ const onEnter = () => {
           </div>
         </div>
       </component>
+      <div class="transition-group-wrapper" v-else>
+        <div>
+          <component
+            :is="TComponents[transitionName]"
+            group
+            :duration="duration"
+            :delay="delay"
+          >
+            <Icon
+              v-for="(color, index) in colors"
+              :color="color"
+              :key="color.key"
+              :index="index"
+              :with-button="true"
+              @remove="remove(index)"
+            ></Icon>
+          </component>
+        </div>
+      </div>
     </div>
 
     <div class="transition-select">
@@ -136,14 +178,11 @@ const onEnter = () => {
           />
         </div>
         <div class="transition-settings_setting">
-          switch
-          <a-input-number
-            :style="{ width: '320px' }"
-            placeholder="Please Enter"
-            :default-value="500"
-            mode="button"
-            class="input-demo"
-          />
+          选择
+          <a-switch v-model="isGroup">
+            <template #checked> Group </template>
+            <template #unchecked> Simple </template>
+          </a-switch>
         </div>
       </a-space>
     </div>
@@ -229,6 +268,12 @@ a,
 }
 .transition-wrapper.group {
   width: 600px;
+}
+.transition-group-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
 }
 .transition-settings {
   margin-top: 10px;
