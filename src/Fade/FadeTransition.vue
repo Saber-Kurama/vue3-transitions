@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-21 20:38:13
+ * @LastEditTime: 2022-02-21 22:26:09
  * @LastEditors: saber
  * @Description: 
 -->
@@ -9,6 +9,7 @@
 import baseProps from "../base/props";
 import type { BasePropsType, EmitsI as BaseEmitsI} from "../base/props";
 import useBaseHook from "../base/hooks";
+import { useAttrs } from "vue";
 
 export default {
   name: "FadeTransition",
@@ -32,15 +33,20 @@ interface EmitsI extends BaseEmitsI{
 const emits = defineEmits<EmitsI>()
 
 // // const emits = defineEmits(['before-enter'])
-// const attrs = useAttrs();
+const attrs = useAttrs();
+console.log('attrs111', attrs)
 // todo: 这个 hook的逻辑对吗， 如果 props 发生修改呢
-const { componentType, hooks } = useBaseHook(props as BasePropsType, emits);
+const { componentType, hooks, beforeEnter } = useBaseHook(props as BasePropsType, emits);
 
-// const hooks = {
-//   ...attrs,
-//   onBeforeEnter: beforeEnter
-// }
-// console.log('hooks---', hooks)
+const beforeEnter1 = (el: any) => {
+  emits('beforeEnter', el)
+  console.log('beforeEnterbeforeEnterbeforeEnterbeforeEnter')
+}
+const hooks1 = {
+  ...attrs,
+  onBeforeEnter: () => {}
+}
+console.log('hooks---', hooks1)
 
 </script>
 <template>
@@ -56,10 +62,12 @@ const { componentType, hooks } = useBaseHook(props as BasePropsType, emits);
   >
     <slot></slot
   ></transition> -->
- 
+ <!-- v-bind="hooks" -->
+ <!-- @beforeEnter="(el: any)=> {beforeEnter1(el)}" -->
   <component
     :is="componentType"
     :tag="props.tag"
+    
     v-bind="hooks"
     enter-active-class="fadeIn"
     move-class="fade-move"

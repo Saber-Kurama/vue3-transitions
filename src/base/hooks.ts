@@ -1,7 +1,7 @@
 /*
  * @Author: saber
  * @Date: 2022-02-21 09:55:38
- * @LastEditTime: 2022-02-21 19:13:50
+ * @LastEditTime: 2022-02-21 22:33:13
  * @LastEditors: saber
  * @Description:
  */
@@ -49,7 +49,6 @@ const useBaseHooks = (props: BasePropsType, emits: EmitsI) => {
 
     const leaveDelay = (props.delay as EnterLeaveI).leave ?? props.delay;
     el.style.animationDelay = `${leaveDelay}ms`;
-
     setStyles(el);
     emits("before-leave", el);
   };

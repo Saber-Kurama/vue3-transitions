@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-21 20:23:05
+ * @LastEditTime: 2022-02-21 22:32:32
  * @LastEditors: saber
  * @Description: 
 -->
@@ -12,6 +12,7 @@ import TheWelcome from "./components/TheWelcome.vue";
 import Icon from "./Icon.vue";
 import { generateRGBColors } from "./utils";
 import { FadeTransition } from "../../src";
+import '../../src/style/index';
 
 const show = ref(true);
 // const group = ref(false);
@@ -88,7 +89,7 @@ const onEnter = () => {
         v-if="!isGroup"
         :duration="duration"
         :delay="delay"
-        @beforeEnter="
+        @before-enter="
           () => {
             beforeEnter();
           }
@@ -113,7 +114,9 @@ const onEnter = () => {
             group
             :duration="duration"
             :delay="delay"
+            @before-enter="beforeEnter"
           >
+          <!-- <transition-group @before-enter="beforeEnter"> -->
             <Icon
               v-for="(color, index) in colors"
               :color="color"
@@ -122,6 +125,7 @@ const onEnter = () => {
               :with-button="true"
               @remove="remove(index)"
             ></Icon>
+            <!-- </transition-group> -->
           </component>
         </div>
       </div>

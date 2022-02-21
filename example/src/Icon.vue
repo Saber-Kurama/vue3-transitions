@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-21 19:28:45
- * @LastEditTime: 2022-02-21 19:49:17
+ * @LastEditTime: 2022-02-21 21:37:51
  * @LastEditors: saber
  * @Description: 
 -->
@@ -41,13 +41,16 @@ const style = computed<StyleValue | undefined>(() => {
   }
   return undefined;
 });
-const emits = defineEmits<{(e: 'remove', data: {index: number}): void}>()
+const emits = defineEmits<{ (e: "remove", data: { index: number }): void }>();
 const remove = () => {
-  emits('remove', {index: props.index || 0})
-}
+  emits("remove", { index: props.index || 0 });
+};
 </script>
 <template>
-  <div class="icon" :style="style" @click.stop="remove"></div>
+  <div class="icon" :style="style" >
+    <div v-if="withButton" class="icon-delete-btn" @mousedown="remove"></div>
+    <slot> </slot>
+  </div>
 </template>
 <style>
 @keyframes shake {
