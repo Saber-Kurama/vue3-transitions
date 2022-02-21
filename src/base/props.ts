@@ -1,3 +1,10 @@
+/*
+ * @Author: saber
+ * @Date: 2022-02-21 09:55:38
+ * @LastEditTime: 2022-02-21 18:18:49
+ * @LastEditors: saber
+ * @Description: 
+ */
 import type { PropType } from "vue";
 
 interface EnterLeaveI {
@@ -5,6 +12,9 @@ interface EnterLeaveI {
   leave: number;
 }
 
+export interface EmitsI {
+  (e: 'before-enter', el: HTMLElement): void
+}
 export interface BasePropsType {
   duration: number | { enter: number; leave: number };
   delay: number | { enter: number; leave: number };

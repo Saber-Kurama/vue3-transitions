@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-18 19:00:49
+ * @LastEditTime: 2022-02-21 18:24:05
  * @LastEditors: saber
  * @Description: 
 -->
@@ -13,20 +13,68 @@ import { FadeTransition } from "../../src";
 
 const show = ref(true);
 const group = ref(false);
+const isGroup = ref(false);
+const duration = ref(300);
+const delay = ref(0);
+const transitionName = ref<string>("FadeTransition");
 
-const TComponents = {
-  fade: FadeTransition,
+const TComponents: any = {
+  FadeTransition,
 };
+const transitionOptions = [
+  {
+    label: "Fade",
+    options: ["FadeTransition"],
+  },
+  {
+    label: "Zoom",
+    options: ["ZoomCenterTransition", "ZoomXTransition", "ZoomYTransition"],
+  },
+  {
+    label: "Collapse",
+    options: ["CollapseTransition"],
+  },
+  {
+    label: "Scale",
+    options: ["ScaleTransition"],
+  },
+  {
+    label: "Slide",
+    options: [
+      "SlideYUpTransition",
+      "SlideYDownTransition",
+      "SlideXLeftTransition",
+      "SlideXRightTransition",
+    ],
+  },
+];
+
+const triggerTransition = () => {
+  if (group.value) {
+  } else {
+    show.value = !show.value;
+  }
+};
+// todo: 组件提示？
+const beforeEnter = () => {
+  console.log('beforeEnter-----')
+}
 </script>
 
 <template>
-  <div><button @click="show = !show">Toggle</button></div>
   <div class="main-content">
     <div class="transition-wrapper">
-      <component :is="TComponents['fade']" :group="group">
+      <component
+        :is="TComponents[transitionName]"
+        appear
+        v-if="!isGroup"
+        :duration="duration"
+        :delay="delay"
+        @beforeEnter="() => { beforeEnter() }"
+      >
         <div v-show="show">
           <div class="box">
-            <p>{{ "saber----saber" }}</p>
+            <p>{{ transitionName }}</p>
           </div>
         </div>
       </component>
@@ -34,21 +82,64 @@ const TComponents = {
 
     <div class="transition-select">
       <a-space>
+        <a-select :style="{ width: '320px' }" v-model="transitionName">
+          <a-optgroup
+            v-for="group in transitionOptions"
+            :key="group.label"
+            :label="group.label"
+          >
+            <a-option
+              v-for="transition in group.options"
+              :key="transition"
+              :value="transition"
+              :label="transition"
+            ></a-option>
+          </a-optgroup>
+        </a-select>
+        <a-button @click="triggerTransition">{{
+          isGroup ? "添加一项" : "切换"
+        }}</a-button>
         <a-select :style="{ width: '320px' }">
           <a-option>Beijing</a-option>
           <a-option>Shanghai</a-option>
           <a-option>Guangzhou</a-option>
         </a-select>
-        <a-select :style="{ width: '320px' }">
-          <a-option>Beijing</a-option>
-          <a-option>Shanghai</a-option>
-          <a-option>Guangzhou</a-option>
-        </a-select>
-        <a-select :style="{ width: '320px' }">
-          <a-option>Beijing</a-option>
-          <a-option>Shanghai</a-option>
-          <a-option>Guangzhou</a-option>
-        </a-select>
+      </a-space>
+    </div>
+    <div class="transition-settings">
+      <a-space>
+        <div class="transition-settings_setting">
+          Duration
+          <a-input-number
+            :style="{ width: '320px' }"
+            placeholder="Please Enter Duration"
+            v-model="duration"
+            step="100"
+            mode="button"
+            class="input-demo"
+          />
+        </div>
+        <div class="transition-settings_setting">
+          Delay
+          <a-input-number
+            :style="{ width: '320px' }"
+            placeholder="Please Enter"
+            v-model="delay"
+            step="100"
+            mode="button"
+            class="input-demo"
+          />
+        </div>
+        <div class="transition-settings_setting">
+          switch
+          <a-input-number
+            :style="{ width: '320px' }"
+            placeholder="Please Enter"
+            :default-value="500"
+            mode="button"
+            class="input-demo"
+          />
+        </div>
       </a-space>
     </div>
   </div>
@@ -134,7 +225,38 @@ a,
 .transition-wrapper.group {
   width: 600px;
 }
+.transition-settings {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.transition-settings_setting {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0px;
+}
 .transition-select {
   width: 100%;
+}
+
+.box {
+  margin: 10px 0px;
+  width: 100%;
+  height: 200px;
+  border-radius: 4px;
+  background-color: var(--secondary-color);
+  text-align: center;
+  color: #fff;
+  padding: 40px 20px;
+  margin-right: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box p {
+  color: white;
 }
 </style>
