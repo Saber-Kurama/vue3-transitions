@@ -1,6 +1,6 @@
 {
   "name": "@dangojs/vue3-transitions",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -13,9 +13,13 @@
     "lib"
   ],
   "scripts": {
-    "build": "npm run build:component && npm run build:style",
+    "build": "pnpm run build:component && pnpm run build:style",
     "build:component": "dango-vue build:component",
-    "build:style": "dango-vue build:style"
+    "build:style": "dango-vue build:style",
+    "change": "pnpm changeset",
+    "vp": "pnpm changeset version",
+    "pub": "pnpm changeset publish",
+    "release": "pnpm changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.20.0",
