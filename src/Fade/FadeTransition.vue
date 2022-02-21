@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-21 18:32:16
+ * @LastEditTime: 2022-02-21 18:53:01
  * @LastEditors: saber
  * @Description: 
 -->
@@ -35,7 +35,7 @@ const emits = defineEmits<EmitsI>()
 // // const emits = defineEmits(['before-enter'])
 const attrs = useAttrs();
 // todo: 这个 hook的逻辑对吗， 如果 props 发生修改呢
-const { componentType, beforeEnter } = useBaseHook(props as BasePropsType, emits);
+const { componentType, beforeEnter, beforeLeave, leave } = useBaseHook(props as BasePropsType, emits);
 
 const hooks = {
   ...attrs,
