@@ -1,12 +1,11 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-21 19:05:04
+ * @LastEditTime: 2022-02-21 20:38:13
  * @LastEditors: saber
  * @Description: 
 -->
 <script lang="ts">
-import { computed, PropType, Transition, TransitionGroup, useAttrs } from "vue";
 import baseProps from "../base/props";
 import type { BasePropsType, EmitsI as BaseEmitsI} from "../base/props";
 import useBaseHook from "../base/hooks";
@@ -35,7 +34,7 @@ const emits = defineEmits<EmitsI>()
 // // const emits = defineEmits(['before-enter'])
 // const attrs = useAttrs();
 // todo: 这个 hook的逻辑对吗， 如果 props 发生修改呢
-const { componentType, beforeEnter, beforeLeave, leave, hooks } = useBaseHook(props as BasePropsType, emits);
+const { componentType, hooks } = useBaseHook(props as BasePropsType, emits);
 
 // const hooks = {
 //   ...attrs,
@@ -70,32 +69,4 @@ const { componentType, beforeEnter, beforeLeave, leave, hooks } = useBaseHook(pr
   </component>
 </template>
 
-<style>
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-.fadeIn {
-  animation-name: fadeIn;
-  animation-duration: 0.3s;
-}
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-.fadeOut {
-  animation-name: fadeOut;
-  animation-duration: 0.3s;
-}
-.fade-move {
-  transition: transform 0.3s ease-out;
-}
-</style>
+
