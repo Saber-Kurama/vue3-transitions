@@ -1,7 +1,7 @@
 /*
  * @Author: saber
  * @Date: 2022-02-21 09:55:38
- * @LastEditTime: 2022-02-21 18:52:29
+ * @LastEditTime: 2022-02-21 19:13:50
  * @LastEditors: saber
  * @Description:
  */
@@ -10,6 +10,7 @@ import {
   PropType,
   Transition,
   TransitionGroup,
+  useAttrs,
   watchEffect,
 } from "vue";
 import baseProps from "./props";
@@ -17,6 +18,7 @@ import type { BasePropsType, EmitsI, EnterLeaveI } from "./props";
 
 const useBaseHooks = (props: BasePropsType, emits: EmitsI) => {
   // watchEffect(() => {
+  const attrs = useAttrs();
   const componentType = computed(() => {
     return props.group ? TransitionGroup : Transition;
   });
@@ -51,12 +53,19 @@ const useBaseHooks = (props: BasePropsType, emits: EmitsI) => {
     setStyles(el);
     emits("before-leave", el);
   };
+  const afterEnter = (el: HTMLElement) => {
+    cleanUpStyles(el)
+    emits('after-enter', el)
+  };
   // 离开事件
   const leave = (el: HTMLElement, done: any) => {
     setAbsolutePosition(el);
     emits("leave", el, done);
   };
-
+  const afterLeave = (el: HTMLElement) => {
+    cleanUpStyles(el)
+    emits('after-leave', el)
+  };
   const setStyles = (el: HTMLElement) => {
     setTransformOrigin(el);
     Object.keys(props.styles).forEach((key: any) => {
@@ -86,6 +95,14 @@ const useBaseHooks = (props: BasePropsType, emits: EmitsI) => {
       el.style.transformOrigin = props.origin;
     }
   };
+  const hooks = {
+    ...attrs,
+    onBeforeEnter: beforeEnter,
+    onAfterEnter: afterEnter,
+    onBeforeLeave: beforeLeave,
+    onLeave: leave,
+    onAfterLeave: afterLeave
+  }
   return {
     componentType,
     beforeEnter,
@@ -95,6 +112,7 @@ const useBaseHooks = (props: BasePropsType, emits: EmitsI) => {
     cleanUpStyles,
     setAbsolutePosition,
     setTransformOrigin,
+    hooks
   };
   // })
 };

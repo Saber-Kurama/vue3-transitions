@@ -1,7 +1,7 @@
 /*
  * @Author: saber
  * @Date: 2022-02-21 09:55:38
- * @LastEditTime: 2022-02-21 18:50:12
+ * @LastEditTime: 2022-02-21 19:11:08
  * @LastEditors: saber
  * @Description: 
  */
@@ -14,8 +14,10 @@ export interface EnterLeaveI {
 
 export interface EmitsI {
   (e: 'before-enter', el: HTMLElement): void;
+  (e: 'after-enter', el: HTMLElement): void;
   (e: 'before-leave', el: HTMLElement): void;
   (e: 'leave', el: HTMLElement, done: any): void;
+  (e: 'after-leave', el: HTMLElement): void;
 }
 export interface BasePropsType {
   duration: number | { enter: number; leave: number };
