@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-22 10:38:39
+ * @LastEditTime: 2022-02-22 18:02:28
  * @LastEditors: saber
  * @Description: 
 -->
@@ -84,6 +84,13 @@ const onEnter = () => {
 <template>
   <div class="main-content">
     <div class="transition-wrapper" :class="{ group: isGroup }">
+      <Transition>
+       <div v-if="show">
+          <div class="box">
+            <p>{{ transitionName }}</p>
+          </div>
+        </div> 
+      </Transition>
       <component
         :is="TComponents[transitionName]"
         appear
@@ -102,7 +109,7 @@ const onEnter = () => {
         "
         move-class="saber"
       >
-        <div v-show="show">
+        <div v-if="show">
           <div class="box">
             <p>{{ transitionName }}</p>
           </div>

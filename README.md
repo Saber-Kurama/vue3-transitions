@@ -24,6 +24,7 @@ import '@dangojs/vue3-transitions/es/style/style.css';
 ## 后续规划
 
 [ ] 解决ts提示问题
+
 [ ] 解决样式问题
 
 dango-vue  组件库的发布方案的调整
