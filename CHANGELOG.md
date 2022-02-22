@@ -1,5 +1,11 @@
 # @dangojs/vue3-transitions
 
+## 0.0.3
+
+### Patch Changes
+
+- fix 修复发布的问题
+
 ## 0.0.2
 
 ### Patch Changes

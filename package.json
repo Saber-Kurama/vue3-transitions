@@ -1,6 +1,6 @@
 {
   "name": "@dangojs/vue3-transitions",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -12,6 +12,12 @@
     "es",
     "lib"
   ],
+  "bugs": {},
+  "author": {},
+  "repository": {
+    "type" : "git", 
+    "url" : "https://github.com/Saber-Kurama/vue3-transitions.git"
+  },
   "scripts": {
     "build": "pnpm run build:component && pnpm run build:style",
     "build:component": "dango-vue build:component",
