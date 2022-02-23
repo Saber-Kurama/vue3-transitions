@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
- * @Date: 2022-02-22 10:10:57
- * @LastEditTime: 2022-02-23 14:17:09
+ * @Date: 2022-02-23 14:22:54
+ * @LastEditTime: 2022-02-23 14:31:45
  * @LastEditors: saber
  * @Description: 
 -->
@@ -12,7 +12,7 @@ import useBaseHook from "../base/hooks";
 // import { useAttrs } from "vue";
 
 export default {
-  name: "SlideYUpTransition",
+  name: "SlideYDownTransition",
   // https://vuejs.org/guide/components/attrs.html#nested-component-inheritance
   inheritAttrs: false,
 };
@@ -49,10 +49,9 @@ const { componentType, hooks } = useBaseHook(props as BasePropsType, emits);
     :tag="tag"
     type="animation"
     v-bind="hooks"
-    enter-active-class="slideYIn"
+    enter-active-class="slideYDownIn"
     move-class="slide-move"
-    leave-active-class="slideYOut"
-  >
+    leave-active-class="slideYDownOut">
     <slot></slot>
   </component>
 </template>

@@ -1,7 +1,7 @@
 /*
  * @Author: saber
  * @Date: 2022-02-21 09:55:38
- * @LastEditTime: 2022-02-21 22:33:49
+ * @LastEditTime: 2022-02-23 14:09:44
  * @LastEditors: saber
  * @Description: 
  */
@@ -14,6 +14,7 @@ export interface EnterLeaveI {
 
 export interface EmitsI {
   (e: 'before-enter', el: HTMLElement): void;
+  (e: 'enter', el: HTMLElement): void;
   (e: 'after-enter', el: HTMLElement): void;
   (e: 'before-leave', el: HTMLElement): void;
   (e: 'leave', el: HTMLElement, done: any): void;

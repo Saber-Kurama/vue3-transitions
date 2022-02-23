@@ -66,3 +66,35 @@
 }
 
 /* SlideYUpTransition end */
+
+/* SlideYUpTransition start*/
+@keyframes slideYDownIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.slideYDownIn {
+  animation-name: slideYDownIn;
+}
+
+@keyframes slideYDownOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+}
+
+.slideYDownOut {
+  animation-name: slideYDownOut;
+}
+/* SlideYUpTransition end */
