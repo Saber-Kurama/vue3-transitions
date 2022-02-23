@@ -1,7 +1,7 @@
 /*
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-23 14:48:39
+ * @LastEditTime: 2022-02-23 14:59:06
  * @LastEditors: saber
  * @Description: 
  */
@@ -11,11 +11,13 @@ import SlideYUpTransition from './Slide/SlideYUpTransition.vue';
 import SlideYDownTransition from './Slide/SlideYDownTransition.vue';
 import SlideXLeftTransition from './Slide/SlideXLeftTransition.vue';
 import SlideXRightTransition from './Slide/SlideXRightTransition.vue';
+import ZoomCenterTransition from './Zoom/ZoomCenterTransition.vue';
 
 export {
     FadeTransition,
     SlideYUpTransition,
     SlideYDownTransition,
     SlideXLeftTransition,
-    SlideXRightTransition
+    SlideXRightTransition,
+    ZoomCenterTransition
 }

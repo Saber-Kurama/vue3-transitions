@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-23 14:51:00
+ * @LastEditTime: 2022-02-23 15:00:19
  * @LastEditors: saber
  * @Description: 
 -->
@@ -17,6 +17,7 @@ import {
   SlideYDownTransition,
   SlideXLeftTransition,
   SlideXRightTransition,
+  ZoomCenterTransition
 } from "../../src";
 import "../../src/style/index";
 
@@ -34,6 +35,7 @@ const TComponents: any = {
   SlideYDownTransition,
   SlideXLeftTransition,
   SlideXRightTransition,
+  ZoomCenterTransition
 };
 const transitionOptions = [
   {

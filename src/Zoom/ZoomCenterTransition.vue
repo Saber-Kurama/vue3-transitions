@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
- * @Date: 2022-02-23 14:32:04
- * @LastEditTime: 2022-02-23 14:54:44
+ * @Date: 2022-02-23 14:54:09
+ * @LastEditTime: 2022-02-23 14:56:32
  * @LastEditors: saber
  * @Description: 
 -->
@@ -11,22 +11,13 @@ import type { BasePropsType, EmitsI as BaseEmitsI } from "../base/props";
 import useBaseHook from "../base/hooks";
 
 export default {
-  name: "SlideXLeftTransition",
+  name: "ZoomCenterTransition",
   inheritAttrs: false,
 };
 </script>
 <script setup lang="ts">
 const props = defineProps({
-  ...baseProps,
-  styles: {
-    type: Object,
-    default: () => {
-      return {
-        animationFillMode: "both",
-        animationTimingFunction: "cubic-bezier(.25,.8,.50,1)",
-      };
-    },
-  },
+  ...baseProps
 });
 
 interface EmitsI extends BaseEmitsI {}
@@ -41,9 +32,9 @@ const { componentType, hooks } = useBaseHook(props as BasePropsType, emits);
     :tag="tag"
     type="animation"
     v-bind="hooks"
-    enter-active-class="slideXLeftIn"
-    move-class="slide-move"
-    leave-active-class="slideXLeftOut">
+    enter-active-class="zoomIn"
+    move-class="zoom-move"
+    leave-active-class="zoomOut">
     <slot></slot>
   </component>
 </template>

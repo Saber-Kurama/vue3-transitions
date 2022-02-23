@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-23 14:41:02
- * @LastEditTime: 2022-02-23 14:41:02
+ * @LastEditTime: 2022-02-23 14:54:55
  * @LastEditors: saber
  * @Description: 
 -->
@@ -11,7 +11,7 @@ import type { BasePropsType, EmitsI as BaseEmitsI } from "../base/props";
 import useBaseHook from "../base/hooks";
 
 export default {
-  name: "SlideYDownTransition",
+  name: "SlideXRightTransition",
   inheritAttrs: false,
 };
 </script>
