@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-23 14:26:45
+ * @LastEditTime: 2022-02-23 14:36:24
  * @LastEditors: saber
  * @Description: 
 -->
@@ -11,7 +11,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 import Icon from "./Icon.vue";
 import { generateRGBColors } from "./utils";
-import { FadeTransition, SlideYUpTransition,SlideYDownTransition } from "../../src";
+import { FadeTransition, SlideYUpTransition,SlideYDownTransition, SlideXLeftTransition } from "../../src";
 import '../../src/style/index';
 
 const show = ref(true);
@@ -25,7 +25,8 @@ const transitionName = ref<string>("FadeTransition");
 const TComponents: any = {
   FadeTransition,
   SlideYUpTransition,
-  SlideYDownTransition
+  SlideYDownTransition,
+  SlideXLeftTransition
 };
 const transitionOptions = [
   {
