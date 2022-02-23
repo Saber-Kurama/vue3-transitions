@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-22 18:02:28
+ * @LastEditTime: 2022-02-23 13:57:00
  * @LastEditors: saber
  * @Description: 
 -->
@@ -79,18 +79,40 @@ const beforeEnter = () => {
 const onEnter = () => {
   console.log("onenter---");
 };
+const onAfterEnter = () => {
+  console.log('onAfterEnter---');
+}
+const onEnterCancelled = () => {
+  console.log('onEnterCancelled---')
+}
+const onBeforeLeave = () => {
+ console.log('onBeforeLeave---') 
+}
+
+const onLeave = (el: any, done: any) => {
+  console.log('onLeave---')
+  done()
+}
+
+const afterLeave = () => {
+  console.log('afterLeave----');
+}
+
+const leaveCancelled = () => {
+  console.log('leaveCancelled----');
+}
 </script>
 
 <template>
   <div class="main-content">
     <div class="transition-wrapper" :class="{ group: isGroup }">
-      <Transition>
+      <!-- <Transition @enter-cancelled="() => {onEnterCancelled()}">
        <div v-if="show">
           <div class="box">
             <p>{{ transitionName }}</p>
           </div>
         </div> 
-      </Transition>
+      </Transition> -->
       <component
         :is="TComponents[transitionName]"
         appear
@@ -107,6 +129,20 @@ const onEnter = () => {
             onEnter();
           }
         "
+        @after-enter="() => {
+          onAfterEnter();
+        }"
+        @enter-cancelled="() => {
+          onEnterCancelled();
+        }"
+        @before-leave="() => {
+          onBeforeLeave();
+        }"
+        @leave="(el: any, done: any) => {
+          onLeave(el, done);
+        }"
+        @after-leave=" () => { afterLeave()}"
+        @leave-cancelled="() => {leaveCancelled()}"
         move-class="saber"
       >
         <div v-if="show">

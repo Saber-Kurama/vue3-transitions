@@ -1,7 +1,7 @@
 /*
  * @Author: saber
  * @Date: 2022-02-21 09:55:38
- * @LastEditTime: 2022-02-21 22:33:13
+ * @LastEditTime: 2022-02-23 11:59:18
  * @LastEditors: saber
  * @Description:
  */
@@ -60,6 +60,7 @@ const useBaseHooks = (props: BasePropsType, emits: EmitsI) => {
   const leave = (el: HTMLElement, done: any) => {
     setAbsolutePosition(el);
     emits("leave", el, done);
+    done();
   };
   const afterLeave = (el: HTMLElement) => {
     cleanUpStyles(el)
