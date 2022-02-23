@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-23 14:36:24
+ * @LastEditTime: 2022-02-23 14:51:00
  * @LastEditors: saber
  * @Description: 
 -->
@@ -11,8 +11,14 @@ import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 import Icon from "./Icon.vue";
 import { generateRGBColors } from "./utils";
-import { FadeTransition, SlideYUpTransition,SlideYDownTransition, SlideXLeftTransition } from "../../src";
-import '../../src/style/index';
+import {
+  FadeTransition,
+  SlideYUpTransition,
+  SlideYDownTransition,
+  SlideXLeftTransition,
+  SlideXRightTransition,
+} from "../../src";
+import "../../src/style/index";
 
 const show = ref(true);
 // const group = ref(false);
@@ -26,7 +32,8 @@ const TComponents: any = {
   FadeTransition,
   SlideYUpTransition,
   SlideYDownTransition,
-  SlideXLeftTransition
+  SlideXLeftTransition,
+  SlideXRightTransition,
 };
 const transitionOptions = [
   {
@@ -58,7 +65,7 @@ const transitionOptions = [
 
 const triggerTransition = () => {
   if (isGroup.value) {
-    add()
+    add();
   } else {
     show.value = !show.value;
   }
@@ -67,7 +74,7 @@ const randomIndex = () => {
   return Math.floor(Math.random() * colors.value.length);
 };
 const add = () => {
-  console.log('add')
+  console.log("add");
   let newColor = generateRGBColors(1);
   colors.value.splice(randomIndex(), 0, newColor[0]);
 };
@@ -82,27 +89,27 @@ const onEnter = () => {
   console.log("onenter---");
 };
 const onAfterEnter = () => {
-  console.log('onAfterEnter---');
-}
+  console.log("onAfterEnter---");
+};
 const onEnterCancelled = () => {
-  console.log('onEnterCancelled---')
-}
+  console.log("onEnterCancelled---");
+};
 const onBeforeLeave = () => {
- console.log('onBeforeLeave---') 
-}
+  console.log("onBeforeLeave---");
+};
 
 const onLeave = (el: any, done: any) => {
-  console.log('onLeave---')
-  done()
-}
+  console.log("onLeave---");
+  done();
+};
 
 const afterLeave = () => {
-  console.log('afterLeave----');
-}
+  console.log("afterLeave----");
+};
 
 const leaveCancelled = () => {
-  console.log('leaveCancelled----');
-}
+  console.log("leaveCancelled----");
+};
 </script>
 
 <template>
@@ -132,20 +139,34 @@ const leaveCancelled = () => {
             onEnter();
           }
         "
-        @after-enter="() => {
-          onAfterEnter();
-        }"
-        @enter-cancelled="() => {
-          onEnterCancelled();
-        }"
-        @before-leave="() => {
-          onBeforeLeave();
-        }"
+        @after-enter="
+          () => {
+            onAfterEnter();
+          }
+        "
+        @enter-cancelled="
+          () => {
+            onEnterCancelled();
+          }
+        "
+        @before-leave="
+          () => {
+            onBeforeLeave();
+          }
+        "
         @leave="(el: any, done: any) => {
           onLeave(el, done);
         }"
-        @after-leave=" () => { afterLeave()}"
-        @leave-cancelled="() => {leaveCancelled()}"
+        @after-leave="
+          () => {
+            afterLeave();
+          }
+        "
+        @leave-cancelled="
+          () => {
+            leaveCancelled();
+          }
+        "
         move-class="saber"
       >
         <div v-if="show">
@@ -163,7 +184,7 @@ const leaveCancelled = () => {
             :delay="delay"
             @before-enter="beforeEnter"
           >
-          <!-- <transition-group @before-enter="beforeEnter"> -->
+            <!-- <transition-group @before-enter="beforeEnter"> -->
             <Icon
               v-for="(color, index) in colors"
               :color="color"

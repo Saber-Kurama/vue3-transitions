@@ -130,3 +130,35 @@
   animation-name: slideXLeftOut;
 }
 /* SlideXLeftTransition end*/
+
+/* SlideXRightTransition start*/
+@keyframes slideXRightIn {
+  from {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.slideXRightIn {
+  animation-name: slideXRightIn;
+}
+
+@keyframes slideXRightOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+}
+
+.slideXRightOut {
+  animation-name: slideXRightOut;
+}
+/* SlideXRightTransition end */
