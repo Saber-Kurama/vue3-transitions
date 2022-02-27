@@ -25,17 +25,34 @@
     "change": "pnpm changeset",
     "vp": "pnpm changeset version",
     "pub": "pnpm changeset publish",
-    "release": "pnpm changeset publish"
+    "release": "pnpm changeset publish",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "docgen": "arco-vue-scripts docgen -i 'src/TEMPLATE.md'"
   },
   "devDependencies": {
+    "@arco-design/arco-vue-scripts": "^0.2.9",
+    "@babel/core": "^7.17.5",
     "@changesets/cli": "^2.20.0",
     "@dangojs/vue-scripts": "^0.0.4",
+    "@storybook/addon-actions": "^6.4.19",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/addon-links": "^6.4.19",
+    "@storybook/builder-webpack5": "^6.4.19",
+    "@storybook/manager-webpack5": "^6.4.19",
+    "@storybook/vue3": "^6.4.19",
+    "babel-loader": "^8.2.3",
     "rollup": "^2.67.2",
     "typescript": "^4.5.5",
-    "vue": "3"
+    "vue": "3",
+    "vue-loader": "^16.8.3"
   },
   "publishConfig": {
     "registry": "",
     "access": "public"
+  },
+  "dependencies": {
+    "@arco-design/web-vue": "^2.18.0-beta.3",
+    "@dangojs/saber-button-vue-test": "^0.0.3"
   }
 }

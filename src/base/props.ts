@@ -13,6 +13,9 @@ export interface EnterLeaveI {
 }
 
 export interface EmitsI {
+  /**
+   * before-enter 事件 
+   */
   (e: 'before-enter', el: HTMLElement): void;
   (e: 'enter', el: HTMLElement): void;
   (e: 'after-enter', el: HTMLElement): void;

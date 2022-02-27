@@ -7,8 +7,6 @@
 -->
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
-import TheWelcome from "./components/TheWelcome.vue";
 import Icon from "./Icon.vue";
 import { generateRGBColors } from "./utils";
 import {
