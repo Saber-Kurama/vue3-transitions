@@ -1,5 +1,11 @@
 # @dangojs/vue3-transitions
 
+## 0.0.5
+
+### Patch Changes
+
+- 添加 peerDependencies
+
 ## 0.0.4
 
 ### Patch Changes
