@@ -10,7 +10,8 @@
   },
   "files": [
     "es",
-    "lib"
+    "lib",
+    "docs"
   ],
   "bugs": {},
   "author": {},
@@ -28,9 +29,12 @@
     "release": "pnpm changeset publish",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "docgen": "arco-vue-scripts docgen -i 'src/TEMPLATE.md'"
+    "docgen": "arco-vue-scripts docgen -i 'src/TEMPLATE.md'",
+    "sync": "arco sync",
+    "generate": "arco generate"
   },
   "devDependencies": {
+    "@arco-design/web-vue": "^2.20.0",
     "@arco-design/arco-vue-scripts": "^0.2.9",
     "@babel/core": "^7.17.5",
     "@changesets/cli": "^2.20.0",
@@ -44,15 +48,22 @@
     "babel-loader": "^8.2.3",
     "rollup": "^2.67.2",
     "typescript": "^4.5.5",
-    "vue": "3",
+    "vue": "^3.2.31",
     "vue-loader": "^16.8.3"
   },
   "publishConfig": {
     "registry": "",
     "access": "public"
   },
-  "dependencies": {
-    "@arco-design/web-vue": "^2.18.0-beta.3",
-    "@dangojs/saber-button-vue-test": "^0.0.3"
+  "peerDependencies": {
+    "@arco-design/web-vue": "^2.20.0",
+    "vue": "^3.2.31"
+  },
+  "arcoMeta": {
+    "type": "vue-component",
+    "title": "vue3 transitions 动画",
+    "category": [
+      "数据展示"
+    ]
   }
 }

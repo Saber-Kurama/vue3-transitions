@@ -1,0 +1,24 @@
+{
+  "name": "@dangojs/vue3-transitions",
+  "title": "vue3 transitions 动画",
+  "description": "",
+  "type": "vue-component",
+  "category": [
+    "数据展示"
+  ],
+  "group": 73,
+  "homepage": "",
+  "repository": "",
+  "author": "Saber-Kurama",
+  "screenshot": "",
+  "package": {
+    "name": "@dangojs/vue3-transitions",
+    "version": "latest",
+    "type": "npm",
+    "registry": "",
+    "peerDependencies": [
+      "@arco-design/web-vue",
+      "vue"
+    ]
+  }
+}
