@@ -164,7 +164,7 @@
 /* SlideXRightTransition end */
 
 
-// zoom-move
+/* zoom-move */
 .zoom-move {
   transition: transform .3s ease-out;
 }

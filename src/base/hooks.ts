@@ -1,13 +1,12 @@
 /*
  * @Author: saber
  * @Date: 2022-02-21 09:55:38
- * @LastEditTime: 2022-02-23 11:59:18
+ * @LastEditTime: 2022-03-21 16:10:26
  * @LastEditors: saber
  * @Description:
  */
 import {
   computed,
-  PropType,
   Transition,
   TransitionGroup,
   useAttrs,

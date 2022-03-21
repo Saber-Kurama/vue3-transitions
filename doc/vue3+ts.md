@@ -5,3 +5,9 @@ https://segmentfault.com/a/1190000039175586
 
 [vue3 setup script+Typescript实战用法（二）——ref、defineProps、defineEmits](https://juejin.cn/post/7012814138145505287)
 [NO7 用ts限制define（Emits 或 Props）的参数类型，限制函数传参类型](https://juejin.cn/post/7011053597307699231)
+
+// vite build 
+
+vendor.6098ae18.js:1 TypeError: Cannot read properties of null (reading 'setupContext')
+
+不在 vite 构建的目录里 会报这个错

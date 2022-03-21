@@ -1,7 +1,7 @@
 <!--
  * @Author: saber
  * @Date: 2022-02-18 10:12:22
- * @LastEditTime: 2022-02-23 15:00:19
+ * @LastEditTime: 2022-03-21 20:24:16
  * @LastEditors: saber
  * @Description: 
 -->
@@ -9,6 +9,15 @@
 import { ref, reactive } from "vue";
 import Icon from "./Icon.vue";
 import { generateRGBColors } from "./utils";
+// import {
+//   FadeTransition,
+//   SlideYUpTransition,
+//   SlideYDownTransition,
+//   SlideXLeftTransition,
+//   SlideXRightTransition,
+//   ZoomCenterTransition
+//   //@ts-ignore
+// } from "../../es";
 import {
   FadeTransition,
   SlideYUpTransition,
@@ -16,8 +25,9 @@ import {
   SlideXLeftTransition,
   SlideXRightTransition,
   ZoomCenterTransition
-} from "../../src";
-import "../../src/style/index";
+  //@ts-ignore
+} from "@dangojs/vue3-transitions";
+import "@dangojs/vue3-transitions/es/style/index";
 
 const show = ref(true);
 // const group = ref(false);
